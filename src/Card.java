@@ -6,13 +6,13 @@ public class Card {
 	private SUIT suit;
 	
 	public Card (VALUE value, SUIT suit) {
-		if(value == null || value.equals(value.RANDOM)) {			
+		/*if(value == null || value.equals(value.RANDOM)) {			
 			this.value = getNewValue(value);
-		} else 
+		} else */
 			this.value = value;
-		if(suit == null || suit.equals(suit.RANDOM)) {
+		/*if(suit == null || suit.equals(suit.RANDOM)) {
 			this.suit = getNewSuit(suit);
-		} else 
+		} else*/
 			this.suit = suit;
 	}
 	
@@ -32,7 +32,9 @@ public class Card {
 	    this.value = value;
 	  }
 	 
-	 public VALUE getNewValue (VALUE newValue) {
+	 /* Delete before turn in this was original prototype for card building
+	  * public VALUE getNewValue (VALUE newValue) {
+	  
 		Random randomNumber = new Random();
 		int newCard = randomNumber.nextInt(13) + 2;
 		if(newCard == 2) {
@@ -95,5 +97,5 @@ public class Card {
 			return newSuit;
 		}
 		return newSuit;		 		 
-	}
+	} */
 }

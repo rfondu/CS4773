@@ -1,8 +1,16 @@
-public class Deck extends Card {
+import java.util.ArrayList;
 
-	public Deck(VALUE value, SUIT suit) {
-		super(value, suit);
-		// TODO Auto-generated constructor stub
+public class Deck {
+	
+	public Deck() {
+		ArrayList cardDeck = new ArrayList();
+		
+		for(int i = 0; i <= 4; i++) {
+			for(int j = 0; j <= 13; j++) {
+				Card card = new Card (VALUE.values(j), SUIT.values(i));
+				cardDeck.add(card);				
+			}
+		}
 	}
 
 }
