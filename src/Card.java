@@ -1,4 +1,5 @@
-import java.util.Random;
+package warGame;
+
 
 public class Card {
 	

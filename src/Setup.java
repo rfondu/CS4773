@@ -1,3 +1,5 @@
+package warGame;
+
 import java.util.Scanner;
 
 
