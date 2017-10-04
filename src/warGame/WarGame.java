@@ -12,27 +12,36 @@ public class WarGame {
 	public static void main(String[] args) {
 		Intro();
 		Deck deck = new Deck();
-		deck.NormalDeck();
-		deck.Shuffle();
-		//Player Initialization
-		Start();
+		for(SUIT suit: SUIT.values()) {
+			for(VALUE value: VALUE.values()) {
+				deck.addCardToDeck(new Card(value, suit));				
+			}
+		}
 	}
 	
 	public static void Intro() {
+		int gameType = 0;
+		Scanner input = new Scanner(System.in);
 		
-		System.out.println("Welcome to");
+		System.out.println("Welcome to\n");
 		System.out.println("*************");
 		System.out.println("* War Game! *");
-		System.out.println("*************");	
-	
-		// create a Scanner to obtain input from the command window
-		Scanner input = new Scanner(System.in);
-    	System.out.println("Select War Game Variation: \n");
-		System.out.println("1) Game type one \n");
-		System.out.println("2) Game type two \n");
-		System.out.println("3) Game type three \n");
-    	int variation = input.nextInt();
-        
+		System.out.println("*************\n");	
+		
+		do {
+	    	System.out.println("Select War Game Variation: \n");
+			System.out.println("1) 2 Players - Won Cards Go Back to Winning Players Deck.  Game Ends After a Set Number of Turns.");
+			System.out.println("2) 2 Players - Won Cards Go to Winning Players Points Pile.  Game Ends After All Cards Played Once.");
+			System.out.println("3) 3 Players - Won Cards Go to Winning Players Points Pile.  Game Ends After All Cards Played Once.");
+	    	
+			if(input.hasNextInt())
+	    		gameType = input.nextInt();
+	    	else {
+	    		System.out.println("You must enter a number 1-3");
+	    		input.next();
+	    	}
+		} while (gameType > 3 || gameType < 1);
+		input.close();
 	}
 	
 		
