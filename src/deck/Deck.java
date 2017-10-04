@@ -14,7 +14,7 @@ public class Deck {
 	public void NormalDeck(){
 		for(SUIT suit: SUIT.values()) {
 			for(VALUE value: VALUE.values()) {
-				deck.add(new Card(value, suit));				
+				addCardToDeck(new Card(value, suit));				
 			}
 		}
 	}
@@ -25,6 +25,9 @@ public class Deck {
 
 	public void Shuffle() {
 		Collections.shuffle(deck);
+		/*for(Card c: deck) {	
+			System.out.println("Suit " + c.getSuit() + " value " + c.getValue() + "\n");
+		}*/
 	}
 
 }
