@@ -12,11 +12,10 @@ public class WarGame {
 	public static void main(String[] args) {
 		Intro();
 		Deck deck = new Deck();
-		for(SUIT suit: SUIT.values()) {
-			for(VALUE value: VALUE.values()) {
-				deck.addCardToDeck(new Card(value, suit));				
-			}
-		}
+		deck.NormalDeck();
+		deck.Shuffle();
+		//Player Initialization
+		Start();
 	}
 	
 	public static void Intro() {
@@ -46,10 +45,7 @@ public class WarGame {
 	
 		
 	public static void Start() {
-		Scanner input = new Scanner(System.in);
 			
-		System.out.println("How many players?");
-		int numPlayers = input.nextInt();		
 	}
 
 }
