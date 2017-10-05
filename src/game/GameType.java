@@ -36,7 +36,7 @@ public class GameType {
 	}
 	
 	public void RoundEnd() {
-		warGame.Output.PlayeScore(player1, player2, score1, score2)
+		warGame.Output.PlayerScore(players);
 	}
 
 }
