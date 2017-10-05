@@ -8,6 +8,24 @@ import player.PlayerPoints;
 
 public class Output {
 	
+	public static void introductionPrint(){
+		System.out.println("Welcome to\n");
+		System.out.println("*************");
+		System.out.println("* War Game! *");
+		System.out.println("*************\n");	
+	}
+	
+	public static void variationInformationPrint(){
+    	System.out.println("Select War Game Variation: \n");
+		System.out.println("1) 2 Players - Won Cards Go Back to Winning Players Deck.  Game Ends After a Set Number of Turns.");
+		System.out.println("2) 2 Players - Won Cards Go to Winning Players Points Pile.  Game Ends After All Cards Played Once.");
+		System.out.println("3) 3 Players - Won Cards Go to Winning Players Points Pile.  Game Ends After All Cards Played Once.");
+	}
+	
+	public static void selectionErrorPrint(){
+		System.out.println("You must enter a number 1-3");		
+	}
+	
 	public static void cardPlayedPrint(ArrayList<Player> players, ArrayList<Card> inPlay){
 		int lastCardPlayed = inPlay.size();
 		

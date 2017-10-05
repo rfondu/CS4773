@@ -18,41 +18,33 @@ public class WarGame {
 	public static void main(String[] args) {
 		ArrayList<Player> players = new ArrayList<Player>();
 		
-		Intro();
+		intro();
 		Deck deck = new Deck();
-		deck.NormalDeck();
-		deck.Shuffle();
-		//Player initialization
+		deck.normalDeck();
+		deck.shuffle();
 		playerSetup(players);
-		DistributeCards(deck, players);
-		Start(players);
+		distributeCards(deck, players);
+		startGame(players);
 	}
 	
-	public static void Intro() {
+	public static void intro() {
 		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Welcome to\n");
-		System.out.println("*************");
-		System.out.println("* War Game! *");
-		System.out.println("*************\n");	
+		Output.introductionPrint();
 		
 		do {
-	    	System.out.println("Select War Game Variation: \n");
-			System.out.println("1) 2 Players - Won Cards Go Back to Winning Players Deck.  Game Ends After a Set Number of Turns.");
-			System.out.println("2) 2 Players - Won Cards Go to Winning Players Points Pile.  Game Ends After All Cards Played Once.");
-			System.out.println("3) 3 Players - Won Cards Go to Winning Players Points Pile.  Game Ends After All Cards Played Once.");
-	    	
+			Output.variationInformationPrint();
+
 			if(input.hasNextInt())
 	    		gameType = input.nextInt();
 	    	else {
-	    		System.out.println("You must enter a number 1-3");
+	    		Output.selectionErrorPrint();
 	    		input.next();
 	    	}
 		} while (gameType > 3 || gameType < 1);
 		input.close();
 	}
 		
-	public static void Start(ArrayList<Player> players) {
+	public static void startGame(ArrayList<Player> players) {
 		if(gameType == 1) {
 			game.gameType1();
 		}
@@ -84,7 +76,7 @@ public class WarGame {
 		return players;
 	}
 	
-	public static void DistributeCards(Deck deck, ArrayList<Player> players) {
+	public static void distributeCards(Deck deck, ArrayList<Player> players) {
 		int split = deck.getDeck().size() / players.size();
 		for(int j = 0; j < players.size(); j++) {
 			for(int i = 0; i < split; i++) {
