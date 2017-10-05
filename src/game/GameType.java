@@ -1,42 +1,49 @@
 package game;
 
+import java.util.ArrayList;
+
 import deck.Card;
 import player.Player;
+import player.PlayerPoints;
 
 public class GameType {
-
-	public void Round (Player player1, Player player2) {
-		PlayCards(player1.drawCard(), player2.drawCard());	
+	ArrayList<Card> inPlay = new ArrayList<Card>(); 
+	ArrayList<Player> players;
+	public void roundStart (ArrayList<Player> players) {
+		this.players = players;
+		cardPlayed();	
 	}
 	
-	public void PlayCards(Card player1Card, Card player2Card) {
-		warGame.Output.PlayerCard(player1, player1Card);
-		warGame.Output.PlayerCard(player2, player2Card);
-		// Call Print class to say what cards are being played by players
-		CompareCards(player1Card, player2Card);
+	public void cardPlayed() {
+		inPlay.add(players.get(0).drawCard());     			// Player 1 draws a card
+		inPlay.add(players.get(1).drawCard());				// Player 2 draws a card
+		warGame.Output.cardPlayedPrint(players, inPlay); 	// Sends players and inPlay arrays data to be printed
+		compareCards();										// Comparison of the 2 cards
 	}
 	
-	public void CompareCards (Card player1Card, Card player2Card) {		
-		if(player1Card.getValue().getCardValue() > player2Card.getValue().getCardValue()) {
-			warGame.Output.PlayerWon(player1));
+	public void compareCards () {
+		int numberCardPlayed = inPlay.size(); 				// get how many cards are in the inPlay array currently
+		if(inPlay.get(numberCardPlayed - 2).getValue().getCardValue() > inPlay.get(numberCardPlayed - 1).getValue().getCardValue()) {
+			warGame.Output.roundWinnerPrint(players.get(0).getName());	// Player 1 won send to print the good news
+			
 			// Count size of in play array and assign points to player 1 int scoreValue OR player 1 unused hand array
-			RoundEnd();
-		} else if (player1Card.getValue().getCardValue() < player2Card.getValue().getCardValue()) {
-			warGame.Output.PlayerWon(player2));
+			PlayerPoints.setPoints(numberCardPlayed);		// Give points to player 1      **** MAY NEED ANOTHER PARAMETER FOR PLAYER TO ASSIGN POINTS TO ***
+			roundEnd();										// Somebody won!  Round will end!
+		} else if (inPlay.get(numberCardPlayed - 2).getValue().getCardValue() < inPlay.get(numberCardPlayed - 1).getValue().getCardValue()) {
+			warGame.Output.roundWinnerPrint(players.get(1).getName());	// Player 2 won send to print the good news
 			// Count size of in play array and assign points to player 2 int scoreValue OR player 2 unused hand array
-			RoundEnd();
+			PlayerPoints.setPoints(numberCardPlayed);		// Give points to player 2		**** MAY NEED ANOTHER PARAMETER FOR PLAYER TO ASSIGN POINTS TO ***
+			roundEnd();										// Somebody won!  Round will end!
 		} else {
-			warGame.Output.War();
-			// Place one down card for each player and call PlayCards() to get another up card for each player
+			warGame.Output.warPrint();						// Print to the console there was a WAR!!!
+			inPlay.add(players.get(0).drawCard());			// Player 1 places a card face down
+			inPlay.add(players.get(1).drawCard());			// Player 2 places a card face down
+			cardPlayed();									// Go back to cardPlayed() because there was a war!
 		}
 	}
 
-	public void War() {
-		// May not need this function
-	}
-	
-	public void RoundEnd() {
-		warGame.Output.PlayerScore(players);
+	public void roundEnd() {
+		warGame.Output.playersScorePrint(players);
 	}
 
 }
