@@ -1,25 +1,34 @@
 package warGame;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import deck.Card;
 import deck.Deck;
-import deck.SUIT;
-import deck.VALUE;
+import player.Player;
+import player.PlayerPoints;
+import player.PlayerContinuous;
 
 public class WarGame {
+	
+	private static int gameType;
 
 	public static void main(String[] args) {
-		//Intro();
+		ArrayList<Player> players = new ArrayList<Player>();
+		
+		Intro();
 		Deck deck = new Deck();
 		deck.NormalDeck();
 		deck.Shuffle();
-		//Player Initialization
-		Start();
+		//Player initialization
+		playerSetup(players);
+		DistributeCards(deck, players);
+		Start(players);
 	}
 	
 	public static void Intro() {
-		int gameType = 0;
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Welcome to\n");
@@ -42,10 +51,47 @@ public class WarGame {
 		} while (gameType > 3 || gameType < 1);
 		input.close();
 	}
-	
 		
-	public static void Start() {
-			
+	public static void Start(ArrayList<Player> players) {
+		if(gameType == 1) {
+			game.gameType1();
+		}
+		if(gameType == 2){
+			game.gameType2();
+		}
+		if(gameType == 3) {
+			game.gameType3();
+		}
+	}
+	
+	public static ArrayList<Player> playerSetup(ArrayList<Player> players) {
+		if(gameType == 1) {
+			PlayerPoints player1 = new PlayerPoints("Sue");
+			PlayerPoints player2 = new PlayerPoints("Bob");
+			Collections.addAll(players, player1, player2);
+		}
+		if(gameType == 2){
+			PlayerContinuous player1 = new PlayerContinuous("Sue");
+			PlayerContinuous player2 = new PlayerContinuous("Bob");
+			Collections.addAll(players, player1, player2);
+		}
+		if(gameType == 3) {
+			PlayerPoints player1 = new PlayerPoints("Sue");
+			PlayerPoints player2 = new PlayerPoints("Bob");
+			PlayerPoints player3 = new PlayerPoints("Tom");
+			Collections.addAll(players, player1, player2, player3);
+		}
+		return players;
+	}
+	
+	public static void DistributeCards(Deck deck, ArrayList<Player> players) {
+		int split = deck.getDeck().size() / players.size();
+		for(int j = 0; j < players.size(); j++) {
+			for(int i = 0; i < split; i++) {
+				Card card = deck.getDeck().remove(i);
+				players.get(j).addCard(card);
+			}
+		}
 	}
 
 }
