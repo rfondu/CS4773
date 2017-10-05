@@ -1,23 +1,18 @@
 package player;
 
-import java.util.ArrayList;
-
-import deck.Card;
-
 public class PlayerPoints extends Player{
-	
-	private ArrayList<Card> winPile;
 
+	static int pointsTotal;
+	
 	public PlayerPoints(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 	
-	public void setWinPile(ArrayList<Card> pile){
-		this.winPile = pile;
+	public static void setPoints(int points){
+		pointsTotal += points;
 	}
 	
-	public int pointCount(){
-		return winPile.size();
+	public int getPoints() {
+		return pointsTotal;
 	}
 }
