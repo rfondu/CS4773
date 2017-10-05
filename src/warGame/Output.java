@@ -26,7 +26,7 @@ public class Output {
 			if(p == Players.length){
 				fencePost = " ";
 			}
-			System.out.println(p.name.getName() + score + fencePost);
+			System.out.println(p.name.getName() + " " + score + fencePost + " ");
 		}
 		System.out.println("\n");
 	}
