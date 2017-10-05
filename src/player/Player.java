@@ -9,8 +9,7 @@ public class Player {
 	private String name;
 	protected ArrayList<Card> downPile;
 	
-	public Player(String name, ArrayList<Card> downPile){
-		this.setDownPile(downPile);
+	public Player(String name){
 		this.setName(name);
 	}
 
@@ -26,11 +25,16 @@ public class Player {
 		return downPile;
 	}
 
-	public void setDownPile(ArrayList<Card> downPile) {
-		this.downPile = downPile;
+	public void addCard(Card card) {
+		this.downPile.add(card);
 	}
 	
 	public Card drawCard() {
-		return downPile.get(0);
+		return downPile.remove(0);
 	}
+	
+	public void setDownPile(ArrayList<Card> downpile) {
+		this.downPile = downpile;
+	}
+	
 }
