@@ -58,11 +58,11 @@ public class Output {
 		System.out.println(winnerName + " wins the round\n");
 	}
 	
-	public void gameWinnerPrint(String winnerName){	
+	public static void gameWinnerPrint(String winnerName){	
 		System.out.println(winnerName + " wins the game!\n");
 	}
 	
-	public void tieGamePrint(){	
+	public static void tieGamePrint(){	
 		System.out.println("Tie game!\n");
 	}
 }
