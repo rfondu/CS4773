@@ -1,6 +1,6 @@
 package deck;
 
-public class Card implements Comparable{
+public class Card{
 	
 	private VALUE value;
 	private SUIT suit;
@@ -31,9 +31,4 @@ public class Card implements Comparable{
 		return null;
 	}
 	
-	//TODO
-	@Override
-	public int compareTo(Object arg0) {
-		return 0;
-	}
 }

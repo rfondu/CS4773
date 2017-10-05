@@ -29,5 +29,9 @@ public class Deck {
 			System.out.println("Suit " + c.getSuit() + " value " + c.getValue() + "\n");
 		}*/
 	}
+	
+	public ArrayList<Card> getDeck() {
+		return deck;
+	}
 
 }
