@@ -13,13 +13,11 @@ public class TwoPlayer implements InterfaceGameType{
 	int points = 0;
 	
 	public void roundStart (ArrayList<Player> players) {
-		System.out.println("roundStart\n");
 		this.players = players;
 		cardPlayed();	
 	}
 	
 	public void cardPlayed() {
-		System.out.println("cardPlayed\n");
 		//check downPile for each player
 		if(players.get(0).getDownPile().size() == 0) {
 			//call EndGame
@@ -33,7 +31,6 @@ public class TwoPlayer implements InterfaceGameType{
 	}
 	
 	public void compareCards() {
-		System.out.println("compareCards\n");
 		int numberCardPlayed = inPlay.size(); 				// get how many cards are in the inPlay array currently
 		if(inPlay.get(numberCardPlayed - 2).getValue().getCardValue() > inPlay.get(numberCardPlayed - 1).getValue().getCardValue()) {
 			Output.roundWinnerPrint(players.get(0).getName());	// Player 1 won send to print the good news
@@ -58,14 +55,12 @@ public class TwoPlayer implements InterfaceGameType{
 	}
 
 	public void roundEnd() {
-		System.out.println("roundEnd\n");
 		inPlay.clear();
 		Output.playersScorePrint(players);
 		cardPlayed();
 	}
 	
 	public void EndGame() {
-		System.out.println("EndGame\n");
 		if(((PlayerPoints)players.get(0)).getPoints() > ((PlayerPoints)players.get(1)).getPoints()) {
 			Output.gameWinnerPrint(players.get(0).getName());
 		}else {
