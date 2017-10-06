@@ -59,7 +59,7 @@ public class WarGame {
 		}*/
 	}
 	
-	public static ArrayList<Player> playerSetup(ArrayList<Player> players) {
+	public static void playerSetup(ArrayList<Player> players) {
 		if(gameType == 1){
 			PlayerContinuous player1 = new PlayerContinuous("Sue");
 			PlayerContinuous player2 = new PlayerContinuous("Bob");
@@ -76,7 +76,6 @@ public class WarGame {
 			PlayerPoints player3 = new PlayerPoints("Tom");
 			Collections.addAll(players, player1, player2, player3);
 		}
-		return players;
 	}
 	
 	public static void distributeCards(Deck deck, ArrayList<Player> players) {
