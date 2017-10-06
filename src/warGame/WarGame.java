@@ -25,6 +25,7 @@ public class WarGame {
 		playerSetup(players);
 		distributeCards(deck, players);
 		startGame(players);
+		System.out.println("Finished");
 	}
 	
 	public static void intro() {
@@ -45,7 +46,7 @@ public class WarGame {
 	}
 		
 	public static void startGame(ArrayList<Player> players) {
-		if(gameType == 1) {
+		/*if(gameType == 1) {
 			game.gameType1();
 		}
 		if(gameType == 2){
@@ -53,7 +54,7 @@ public class WarGame {
 		}
 		if(gameType == 3) {
 			game.gameType3();
-		}
+		}*/
 	}
 	
 	public static ArrayList<Player> playerSetup(ArrayList<Player> players) {
@@ -80,7 +81,7 @@ public class WarGame {
 		int split = deck.getDeck().size() / players.size();
 		for(int j = 0; j < players.size(); j++) {
 			for(int i = 0; i < split; i++) {
-				Card card = deck.getDeck().remove(i);
+				Card card = deck.getDeck().remove(0);
 				players.get(j).addCard(card);
 			}
 		}

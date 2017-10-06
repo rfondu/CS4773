@@ -41,10 +41,10 @@ public class Output {
 		String fencePost = ",";
 		int i = 0;
 		for(Player p: players) {
-			if(i == players.size()){
+			if(i == players.size()-1){
 				fencePost = " ";
 			}
-			System.out.println(p.getName() + " " + p.getPoints() + fencePost + " ");  // **** How are we going to call points?  PlayerPoints array holds it but we are sending player
+			System.out.println(p.getName() + " " + ((PlayerPoints) p).getPoints() + fencePost + " ");  // **** How are we going to call points?  PlayerPoints array holds it but we are sending player
 			i++;																	 //      we may need to delete PlayerPoints and add its functionality to Player.java.  Thoughts? ****	
 		}
 		System.out.println("\n");
