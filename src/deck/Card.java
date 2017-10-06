@@ -26,9 +26,4 @@ public class Card{
 		this.value = value;
 	}
 	
-	//TODO
-	public String toString(){
-		return null;
-	}
-	
 }

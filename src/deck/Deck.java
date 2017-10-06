@@ -11,7 +11,7 @@ public class Deck {
 		deck = new ArrayList<Card>();
 	}
 	
-	public void NormalDeck(){
+	public void normalDeck(){
 		for(SUIT suit: SUIT.values()) {
 			for(VALUE value: VALUE.values()) {
 				addCardToDeck(new Card(value, suit));				
@@ -23,7 +23,7 @@ public class Deck {
 		deck.add(card);
 	}
 
-	public void Shuffle() {
+	public void shuffle() {
 		Collections.shuffle(deck);
 		/*for(Card c: deck) {	
 			System.out.println("Suit " + c.getSuit() + " value " + c.getValue() + "\n");
