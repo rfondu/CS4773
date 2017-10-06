@@ -28,9 +28,10 @@ public class Output {
 	
 	public static void cardPlayedPrint(ArrayList<Player> players, ArrayList<Card> inPlay){
 		int lastCardPlayed = inPlay.size();
-		
-		System.out.println(players.get(0).getName() + " plays " + inPlay.get(lastCardPlayed-2).getValue() + " of " + inPlay.get(lastCardPlayed-2).getSuit() + " as up card ");
-		System.out.println(players.get(1).getName() + " plays " + inPlay.get(lastCardPlayed-1).getValue() + " of " + inPlay.get(lastCardPlayed-1).getSuit() + " as up card ");
+		for (int i = 0, j = players.size(); i < players.size(); i++, j--) {
+			System.out.println(players.get(i).getName() + " plays " + inPlay.get(lastCardPlayed-j).getValue() + " of " + inPlay.get(lastCardPlayed-j).getSuit() + " as up card ");
+		  //System.out.println(players.get(1).getName() + " plays " + inPlay.get(lastCardPlayed-1).getValue() + " of " + inPlay.get(lastCardPlayed-1).getSuit() + " as up card ");
+		}
 	}
 	
 	public static void playersScorePrint(ArrayList<Player> players){
