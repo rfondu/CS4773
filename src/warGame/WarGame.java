@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 import deck.Card;
 import deck.Deck;
-import game.TwoPlayer;
+import game.Continuous;
+import game.Points;
+import game.ThreePlayer;
 import player.Player;
 import player.PlayerPoints;
 import player.PlayerContinuous;
@@ -46,17 +48,18 @@ public class WarGame {
 	}
 		
 	public static void startGame(ArrayList<Player> players) {
-		game.InterfaceGameType war = new TwoPlayer();
-		war.roundStart(players);
-		/*if(gameType == 1) {
-			game.gameType1();
+		if(gameType == 1) {
+			game.InterfaceGameType war = new Continuous();
+			war.roundStart(players);
 		}
-		if(gameType == 2){
-			game.gameType2();
+		if(gameType == 2) {
+			game.InterfaceGameType war = new Points();
+			war.roundStart(players);
 		}
 		if(gameType == 3) {
-			game.gameType3();
-		}*/
+			game.InterfaceGameType war = new ThreePlayer();
+			war.roundStart(players);
+		}
 	}
 	
 	public static void playerSetup(ArrayList<Player> players) {

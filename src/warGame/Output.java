@@ -33,7 +33,7 @@ public class Output {
 		}
 	}
 	
-	public static void playersScorePrint(ArrayList<Player> players){
+	public static void playersPointsScorePrint(ArrayList<Player> players){
 
 		System.out.print("Score is "); 
 		String fencePost = ",";		
@@ -42,6 +42,19 @@ public class Output {
 				fencePost = " ";
 			}
 			System.out.print(p.getName() + " " + ((PlayerPoints) p).getPoints() + fencePost + " ");  																		
+		}
+		System.out.println("\n");
+	}
+	
+	public static void playersContinuousScorePrint(ArrayList<Player> players){
+
+		System.out.print("Score is "); 
+		String fencePost = ",";		
+		for(Player p: players) {
+			if(players.indexOf(p) == players.size()-1){
+				fencePost = " ";
+			}
+			System.out.print(p.getName() + " " + p.getDownPile().size() + fencePost + " ");  																		
 		}
 		System.out.println("\n");
 	}
