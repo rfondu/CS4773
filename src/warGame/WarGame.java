@@ -24,9 +24,7 @@ public class WarGame {
 		deck.shuffle();
 		playerSetup(players);
 		distributeCards(deck, players);
-		System.out.println("Before startGame\n");
 		startGame(players);
-		System.out.println("After startGame\n");
 		System.out.println("Finished");
 	}
 	
