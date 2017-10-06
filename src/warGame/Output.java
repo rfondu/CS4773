@@ -29,17 +29,15 @@ public class Output {
 	public static void cardPlayedPrint(ArrayList<Player> players, ArrayList<Card> inPlay){
 		int lastCardPlayed = inPlay.size();
 		
-		System.out.println(players.get(0).getName() + " plays " + inPlay.get(lastCardPlayed-1).getValue() + " of " + inPlay.get(lastCardPlayed-2).getSuit() + " as up card ");
-		System.out.println(players.get(1).getName() + " plays " + inPlay.get(lastCardPlayed).getValue() + " of " + inPlay.get(lastCardPlayed-1).getSuit() + " as up card ");
+		System.out.println(players.get(0).getName() + " plays " + inPlay.get(lastCardPlayed-2).getValue() + " of " + inPlay.get(lastCardPlayed-2).getSuit() + " as up card ");
+		System.out.println(players.get(1).getName() + " plays " + inPlay.get(lastCardPlayed-1).getValue() + " of " + inPlay.get(lastCardPlayed-1).getSuit() + " as up card ");
 	}
 	
 	public static void playersScorePrint(ArrayList<Player> players){
 
 		System.out.print("Score is "); 
-		String fencePost = ",";
-
+		String fencePost = ",";		
 		for(Player p: players) {
-			System.out.println(players.indexOf(p) + "is the index");
 			if(players.indexOf(p) == players.size()-1){
 				fencePost = " ";
 			}
@@ -53,14 +51,14 @@ public class Output {
 	}
 	
 	public static void roundWinnerPrint(String winnerName){
-		System.out.println(winnerName + " wins the round\n");
+		System.out.println(winnerName + " wins the round");
 	}
 	
 	public static void gameWinnerPrint(String winnerName){	
-		System.out.println(winnerName + " wins the game!\n");
+		System.out.println(winnerName + " wins the game!");
 	}
 	
 	public static void tieGamePrint(){	
-		System.out.println("Tie game!\n");
+		System.out.println("Tie game!");
 	}
 }

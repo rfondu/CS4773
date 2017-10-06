@@ -2,11 +2,11 @@ package warGame;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import deck.Card;
 import deck.Deck;
+import game.TwoPlayer;
 import player.Player;
 import player.PlayerPoints;
 import player.PlayerContinuous;
@@ -24,7 +24,9 @@ public class WarGame {
 		deck.shuffle();
 		playerSetup(players);
 		distributeCards(deck, players);
+		System.out.println("Before startGame\n");
 		startGame(players);
+		System.out.println("After startGame\n");
 		System.out.println("Finished");
 	}
 	
@@ -46,6 +48,8 @@ public class WarGame {
 	}
 		
 	public static void startGame(ArrayList<Player> players) {
+		game.InterfaceGameType war = new TwoPlayer();
+		war.roundStart(players);
 		/*if(gameType == 1) {
 			game.gameType1();
 		}
@@ -58,14 +62,14 @@ public class WarGame {
 	}
 	
 	public static ArrayList<Player> playerSetup(ArrayList<Player> players) {
-		if(gameType == 1) {
-			PlayerPoints player1 = new PlayerPoints("Sue");
-			PlayerPoints player2 = new PlayerPoints("Bob");
-			Collections.addAll(players, player1, player2);
-		}
-		if(gameType == 2){
+		if(gameType == 1){
 			PlayerContinuous player1 = new PlayerContinuous("Sue");
 			PlayerContinuous player2 = new PlayerContinuous("Bob");
+			Collections.addAll(players, player1, player2);
+		}
+		if(gameType == 2) {
+			PlayerPoints player1 = new PlayerPoints("Sue");
+			PlayerPoints player2 = new PlayerPoints("Bob");
 			Collections.addAll(players, player1, player2);
 		}
 		if(gameType == 3) {
