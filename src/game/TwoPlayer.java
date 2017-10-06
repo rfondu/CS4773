@@ -44,9 +44,10 @@ public class TwoPlayer implements InterfaceGameType{
 			roundEnd();										// Somebody won!  Round will end!
 		} else {
 			Output.warPrint();						// Print to the console there was a WAR!!!
-			if(inPlay.size() > 0) {
+			if(players.get(0).getDownPile().size() == 0) {
 				Output.playersScorePrint(players);
 				EndGame();
+				return;
 			}
 			inPlay.add(players.get(0).drawCard());			// Player 1 places a card face down
 			inPlay.add(players.get(1).drawCard());			// Player 2 places a card face down
