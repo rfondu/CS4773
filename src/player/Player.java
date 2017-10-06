@@ -7,7 +7,7 @@ import deck.Card;
 public class Player {
 	
 	private String name;
-	protected ArrayList<Card> downPile;
+	protected ArrayList<Card> downPile = new ArrayList<Card>();
 	
 	public Player(String name){
 		this.setName(name);

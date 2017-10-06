@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import deck.Card;
 
 public class PlayerContinuous extends Player{
-	
-	private ArrayList<Card> winPile;
 
 	public PlayerContinuous(String name) {
 		super(name);

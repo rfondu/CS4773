@@ -2,13 +2,13 @@ package player;
 
 public class PlayerPoints extends Player{
 
-	static int pointsTotal;
+	private int pointsTotal;
 	
 	public PlayerPoints(String name) {
 		super(name);
 	}
 	
-	public static void setPoints(int points){
+	public void setPoints(int points){
 		pointsTotal += points;
 	}
 	
