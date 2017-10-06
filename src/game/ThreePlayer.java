@@ -11,6 +11,7 @@ public class ThreePlayer implements InterfaceGameType{
 	ArrayList<Card> inPlay = new ArrayList<Card>(); 
 	ArrayList<Player> players;
 	int points = 0;
+	Player winner;
 	
 	public void roundStart (ArrayList<Player> players) {
 		this.players = players;
@@ -20,7 +21,7 @@ public class ThreePlayer implements InterfaceGameType{
 	public void cardPlayed() {
 		//check downPile for each player
 		if(players.get(0).getDownPile().size() == 0) {
-			//call EndGame
+			Output.playersPointsScorePrint(players);
 			endGame();
 			return;
 		}
@@ -63,7 +64,7 @@ public class ThreePlayer implements InterfaceGameType{
 		// if we made it this far, there was a war...
 		Output.warPrint();						// Print to the console there was a WAR!!!
 		if(players.get(0).getDownPile().size() == 0) {
-			Output.playersScorePrint(players);
+			Output.playersPointsScorePrint(players);
 			endGame();
 			return;
 		}
@@ -75,7 +76,7 @@ public class ThreePlayer implements InterfaceGameType{
 
 	public void roundEnd() {
 		inPlay.clear();
-		Output.playersScorePrint(players);
+		Output.playersPointsScorePrint(players);
 		cardPlayed();
 	}
 	
@@ -83,21 +84,34 @@ public class ThreePlayer implements InterfaceGameType{
 		if(((PlayerPoints)players.get(0)).getPoints() > ((PlayerPoints)players.get(1)).getPoints()) {
 			if(((PlayerPoints)players.get(0)).getPoints() > ((PlayerPoints)players.get(2)).getPoints()) {
 				Output.gameWinnerPrint(players.get(0).getName());
+				setWinner(players.get(0));
 				return;
 			}
 		}
 		if(((PlayerPoints)players.get(1)).getPoints() > ((PlayerPoints)players.get(0)).getPoints()) {
 			if(((PlayerPoints)players.get(1)).getPoints() > ((PlayerPoints)players.get(2)).getPoints()) {
 				Output.gameWinnerPrint(players.get(1).getName());
+				setWinner(players.get(1));
 				return;
 			}
 		}
 		if((((PlayerPoints)players.get(2)).getPoints() > ((PlayerPoints)players.get(0)).getPoints()) &&
 				(((PlayerPoints)players.get(2)).getPoints() > ((PlayerPoints)players.get(1)).getPoints())) {
 				Output.gameWinnerPrint(players.get(2).getName());
+				setWinner(players.get(2));
 				return;
 		}
-			System.out.println("Tie!"); // If we made it this far, we tie!
+		Output.tieGamePrint();
+	}
+
+	@Override
+	public Player getWinner() {
+		return winner;
+	}
+
+	@Override
+	public void setWinner(Player player) {
+		winner = player;
 	}
 
 }

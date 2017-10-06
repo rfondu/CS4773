@@ -3,7 +3,6 @@ package game;
 import java.util.ArrayList;
 
 import player.Player;
-import player.PlayerPoints;
 
 public interface InterfaceGameType {
 	
@@ -11,4 +10,6 @@ public interface InterfaceGameType {
 	public void cardPlayed();
 	public void compareCards();
 	public void roundEnd();
+	public Player getWinner();
+	public void setWinner(Player player);
 }
