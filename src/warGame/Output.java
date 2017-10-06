@@ -34,23 +34,21 @@ public class Output {
 	}
 	
 	public static void playersScorePrint(ArrayList<Player> players){
-		// need to either pass the score or use array.length to get the score
-		// I know it's not correct but the logic is there just need to figure out what will be passed
-		
-		System.out.println("Score is "); 
+
+		System.out.print("Score is "); 
 		String fencePost = ",";
-		int i = 0;
+
 		for(Player p: players) {
-			if(i == players.size()-1){
+			System.out.println(players.indexOf(p) + "is the index");
+			if(players.indexOf(p) == players.size()-1){
 				fencePost = " ";
 			}
-			System.out.println(p.getName() + " " + ((PlayerPoints) p).getPoints() + fencePost + " ");  // **** How are we going to call points?  PlayerPoints array holds it but we are sending player
-			i++;																	 //      we may need to delete PlayerPoints and add its functionality to Player.java.  Thoughts? ****	
+			System.out.print(p.getName() + " " + ((PlayerPoints) p).getPoints() + fencePost + " ");  																		
 		}
 		System.out.println("\n");
 	}
 	
-	public static void warPrint(){	
+	public static void warPrint(){
 		System.out.println("WAR !\n");
 	}
 	
