@@ -192,4 +192,24 @@ public class WarGameJunitTest {
 		
 		assertEquals(bob.getPoints(), sue.getPoints());
 	}
+	
+	@Test
+	public void testTieGameThreePlayerCompleteDeckPoints() {
+		Deck deck = new Deck();
+		deck.normalDeck();
+		
+		PlayerPoints bob = new PlayerPoints("Bob");
+		PlayerPoints sue = new PlayerPoints("Sue");
+		PlayerPoints tom = new PlayerPoints("Tom");
+		
+		players.add(bob);
+		players.add(sue);
+		players.add(tom);
+		
+		warGame.WarGame.distributeCards(deck, players);
+		game.InterfaceGameType war = new ThreePlayer();
+		war.roundStart(players);
+		
+		assertEquals(bob.getPoints(), sue.getPoints(), tom.getPoints());
+	}
 }
