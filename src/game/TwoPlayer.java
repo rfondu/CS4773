@@ -33,18 +33,19 @@ public abstract class TwoPlayer implements InterfaceGameType{
 	public void compareCards() {
 		int numberCardPlayed = inPlay.size(); 				// get how many cards are in the inPlay array currently
 		if(inPlay.get(numberCardPlayed - 2).getValue().getCardValue() > inPlay.get(numberCardPlayed - 1).getValue().getCardValue()) {
-			Output.roundWinnerPrint(players.get(0).getName());	// Player 1 won send to print the good news
-			// Count size of in play array and assign points to player 1 int scoreValue OR player 1 unused hand array
-			points(players.get(0));		// Give points to player 1      **** MAY NEED ANOTHER PARAMETER FOR PLAYER TO ASSIGN POINTS TO ***
-			roundEnd();										// Somebody won!  Round will end!
+			Innards(0);
 		} else if (inPlay.get(numberCardPlayed - 2).getValue().getCardValue() < inPlay.get(numberCardPlayed - 1).getValue().getCardValue()) {
-			Output.roundWinnerPrint(players.get(1).getName());	// Player 2 won send to print the good news
-			// Count size of in play array and assign points to player 2 int scoreValue OR player 2 unused hand array
-			points(players.get(1));		// Give points to player 2		**** MAY NEED ANOTHER PARAMETER FOR PLAYER TO ASSIGN POINTS TO ***
-			roundEnd();										// Somebody won!  Round will end!
+			Innards(1);									// Somebody won!  Round will end!
 		} else {
 			war();
 		}
+	}
+	
+	public void Innards(int player) {
+		Output.roundWinnerPrint(players.get(player).getName());	// Player 1 won send to print the good news
+		// Count size of in play array and assign points to player 1 int scoreValue OR player 1 unused hand array
+		points(players.get(player));		// Give points to player 1      **** MAY NEED ANOTHER PARAMETER FOR PLAYER TO ASSIGN POINTS TO ***
+		roundEnd();										// Somebody won!  Round will end!
 	}
 	
 	public void war() {
