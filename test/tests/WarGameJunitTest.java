@@ -156,4 +156,40 @@ public class WarGameJunitTest {
 		
 		assertEquals(oneCard, tom.drawCard());
 	}
+	
+	@Test
+	public void testTieGameTwoPlayerCompleteDeckContinuous() {
+		Deck deck = new Deck();
+		deck.normalDeck();
+		
+		PlayerContinuous bob = new PlayerContinuous("Bob");
+		PlayerContinuous sue = new PlayerContinuous("Sue");
+		
+		players.add(bob);
+		players.add(sue);
+		
+		warGame.WarGame.distributeCards(deck, players);
+		game.InterfaceGameType war = new Continuous();
+		war.roundStart(players);
+		
+		assertEquals(bob.getDownPile().size(), sue.getDownPile().size());
+	}
+	
+	@Test
+	public void testTieGameTwoPlayerCompleteDeckPoints() {
+		Deck deck = new Deck();
+		deck.normalDeck();
+		
+		PlayerPoints bob = new PlayerPoints("Bob");
+		PlayerPoints sue = new PlayerPoints("Sue");
+		
+		players.add(bob);
+		players.add(sue);
+		
+		warGame.WarGame.distributeCards(deck, players);
+		game.InterfaceGameType war = new Points();
+		war.roundStart(players);
+		
+		assertEquals(bob.getPoints(), sue.getPoints());
+	}
 }
