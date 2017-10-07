@@ -36,16 +36,19 @@ public class ThreePlayer implements InterfaceGameType{
 		if(inPlay.get(numberCardPlayed - 3).getValue().getCardValue() > inPlay.get(numberCardPlayed - 2).getValue().getCardValue()) {
 			if(inPlay.get(numberCardPlayed - 3).getValue().getCardValue() > inPlay.get(numberCardPlayed - 1).getValue().getCardValue()) {
 				Innards(0);
-			}else {
+			}else if(inPlay.get(numberCardPlayed - 3).getValue().getCardValue() < inPlay.get(numberCardPlayed - 1).getValue().getCardValue()) {
 				Innards(2);
-			}
+			} else
+				war();
 		}else if(inPlay.get(numberCardPlayed - 2).getValue().getCardValue() > inPlay.get(numberCardPlayed - 1).getValue().getCardValue()) {
-			Innards(1);
-		} else if(inPlay.get(numberCardPlayed - 2).getValue().getCardValue() < inPlay.get(numberCardPlayed - 1).getValue().getCardValue()){
+			if(inPlay.get(numberCardPlayed - 2).getValue().getCardValue() > inPlay.get(numberCardPlayed - 3).getValue().getCardValue()) {
+				Innards(1);
+			} else
+				war();
+		} else if(inPlay.get(numberCardPlayed - 2).getValue().getCardValue() < inPlay.get(numberCardPlayed - 1).getValue().getCardValue())
 			Innards(2);
-		} else {
+		else 
 			war();
-		}
 	}
 	
 	public void war() {
