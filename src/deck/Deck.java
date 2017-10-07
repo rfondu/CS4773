@@ -25,9 +25,6 @@ public class Deck {
 
 	public void shuffle() {
 		Collections.shuffle(deck);
-		/*for(Card c: deck) {	
-			System.out.println("Suit " + c.getSuit() + " value " + c.getValue() + "\n");
-		}*/
 	}
 	
 	public ArrayList<Card> getDeck() {
