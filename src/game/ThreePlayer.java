@@ -21,7 +21,6 @@ public class ThreePlayer implements InterfaceGameType{
 	public void cardPlayed() {
 		//check downPile for each player
 		if(players.get(0).getDownPile().size() == 0) {
-			Output.playersPointsScorePrint(players);
 			endGame();
 			return;
 		}
@@ -44,8 +43,9 @@ public class ThreePlayer implements InterfaceGameType{
 			Innards(1);
 		} else if(inPlay.get(numberCardPlayed - 2).getValue().getCardValue() < inPlay.get(numberCardPlayed - 1).getValue().getCardValue()){
 			Innards(2);
+		} else {
+			war();
 		}
-		war();
 	}
 	
 	public void war() {
@@ -80,20 +80,16 @@ public class ThreePlayer implements InterfaceGameType{
 			if(((PlayerPoints)players.get(0)).getPoints() > ((PlayerPoints)players.get(2)).getPoints()) {
 				Output.gameWinnerPrint(players.get(0).getName());
 				setWinner(players.get(0));
-				return;
 			}else {
 				Output.gameWinnerPrint(players.get(2).getName());
 				setWinner(players.get(2));
-				return;
 			}
 		}else if (((PlayerPoints)players.get(1)).getPoints() > ((PlayerPoints)players.get(2)).getPoints()){
 			Output.gameWinnerPrint(players.get(1).getName());
 			setWinner(players.get(1));
-			return;
 		}else {
 			Output.gameWinnerPrint(players.get(2).getName());
 			setWinner(players.get(2));
-			return;
 		}
 	}
 
